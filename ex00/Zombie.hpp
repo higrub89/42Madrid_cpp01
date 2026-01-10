@@ -9,7 +9,7 @@ class Zombie
     private :
         std::string _name;
     public :
-        explicit Zombie(std::dtring name);
+        explicit Zombie(std::string name);
         ~Zombie();
 
         void    announce(void) const;
