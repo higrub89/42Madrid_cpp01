@@ -16,14 +16,17 @@ Zombie::Zombie(){
     this->_name = "(Unidentified Subject)";
 }
 
-Zombie::Zombie(std::string name) : _name(name){
-    std::cout << "Debug: Zombie " << this->_name << " ha sido destruido." << std::endl;
+Zombie::Zombie(std::string name) : _name(name) {
 }
 
-void ZOmbie::announce(void) const{
+Zombie::~Zombie(){
+    std::cout << "Debug: Zombie " << this->_name << " has been destroyed ." << std::endl;
+}
+
+void Zombie::announce(void) const{
     std::cout << this->_name << " BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-void ZOmbie::setName(std::string name){
+void Zombie::setName(std::string name){
     this->_name = name;
 }

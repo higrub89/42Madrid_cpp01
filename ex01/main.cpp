@@ -12,40 +12,28 @@
 
 #include "Zombie.hpp"
 
-#define RESET "\033[0m"
-#define GREEN "\033[32m"
-#define RED "\033[31m"
-#define YELLOW "\033[33m"
+#define NUM_ZOMBIES 10
 
-int main() {
-    std::cout << GREEN << "=== TEST 1: HEAP ALLOCATION (newZombie) ===" << RESET << std::endl;
+int main()
+{
+    std::cout << "=== START HORDES ===" << std::endl;
+
+    Zombie* horde = zombieHorde(NUM_ZOMBIES, "CloneTrooper");
+    if (horde == NULL)
     {
-        Zombie* heapZombie = newZombie("heapZ");
-
-        if (heapZombie == NULL)
-        {
-            std::cout << RED << "Error: Memory allocation failed" << RESET << std::endl;
-            return 1;
-        }
-        heapZombie->announce();
-
-        std::cout << YELLOW << "[LOG] calling a delete ..." << RESET << std::endl;
-        delete heapZombie;
+        std::cout << "Assignment error" << std::endl;
+        return (1);
     }
-    std::cout << std::endl;
 
-    std::cout << GREEN << "=== TEST 2: STACK ALLOCATION (randomChump) ===" << RESET << std::endl;
-    {
-        randomChump("stackZ");
-    }
-    std::cout << std::endl;
+    std::cout << "\n=== ZOMBIES ANNOUNCE ===" << std::endl;
 
-    std::cout << GREEN << "=== TEST 3: MANUAL STACK INSTANCE ===" << RESET << std::endl;
-    {
-        Zombie stackZombie("manualStackZ");
-        stackZombie.announce();
+    for (int i = 0; i < NUM_ZOMBIES; i++)
+        horde[i].announce();
 
-        std::cout << YELLOW << "[LOG] outing of scope test 3..." << RESET << std::endl;
-    }
+    std::cout << "\n=== END HORDES PROTOCOL (DELETE[]) ===" << std::endl;
+
+    delete[] horde;
+
+    std::cout << "\n=== END HORDES ===" << std::endl;
     return (0);
 }
