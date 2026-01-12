@@ -21,13 +21,17 @@ class Zombie
     private :
         std::string _name;
     public :
-        explicit Zombie(std::string name);
+        Zombie();
+
+        Zombie(std::string name);
+        
         ~Zombie();
 
         void    announce(void) const;
+
+        void    setName(std::string name);
 };
 
-Zombie* newZombie(std::string name);
-void randomChump(std::string name);
+Zombie* xombieHorde(int N, std::string name);
 
 #endif
