@@ -1,0 +1,17 @@
+# Prerrequisitos de compilación
+*.d
+*.o
+*.a
+
+# Ejecutables (Añade aquí los nombres de tus programas)
+brainz
+moarbrainz
+hi_brain
+violence
+sed_is_for_losers
+harl
+harlFilter
+
+# Archivos del sistema/IDE
+.DS_Store
+.vscode/
