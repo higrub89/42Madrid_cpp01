@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Harl.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rhiguita <rhiguita@student.42madrid.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/21 23:50:58 by rhiguita          #+#    #+#             */
+/*   Updated: 2026/01/21 23:51:01 by rhiguita         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Harl.hpp"
 
 Harl::Harl() {
@@ -5,9 +17,6 @@ Harl::Harl() {
 
 Harl::~Harl() {
 }
-
-// --- Implementación de los niveles de queja ---
-// Textos extraídos directamente del manual técnico (Subject)
 
 void Harl::debug(void) {
     std::cout << "[ DEBUG ]" << std::endl;
@@ -30,8 +39,6 @@ void Harl::error(void) {
 }
 
 void Harl::complain(std::string level) {
-    // 1. Array de Punteros a Funciones Miembro
-    // Sintaxis: TipoReturn (NombreClase::*NombreArray[])(Argumentos)
     void (Harl::*ptr_complain[])(void) = {
         &Harl::debug,
         &Harl::info,
@@ -39,7 +46,6 @@ void Harl::complain(std::string level) {
         &Harl::error
     };
 
-    // 2. Array de claves (Strings)
     std::string levels[] = {
         "DEBUG", 
         "INFO", 
@@ -47,10 +53,8 @@ void Harl::complain(std::string level) {
         "ERROR"
     };
 
-    // 3. Búsqueda y Ejecución (Dispatch)
     for (int i = 0; i < 4; i++) {
         if (levels[i] == level) {
-            // Invocación del puntero: (this->*puntero)()
             (this->*ptr_complain[i])();
             return;
         }
